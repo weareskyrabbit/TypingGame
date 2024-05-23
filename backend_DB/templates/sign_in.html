@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>サインイン</title>
+</head>
+<body>
+    <header></header>
+
+    <div class="section_sigin_in">
+        <p>サインイン</p>
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <ul class="flashes">
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+        
+        <form action="{{url_for('sign_in')}}" method="post">
+            <div>
+                <label>メール</label>
+                <input type="email" name="email">
+            </div>
+            <div>
+                <label>パスワード</label>
+                <input type="password" name="password">
+            </div>
+            <div>
+                <label>アカウント名</label>
+                <input  name="datetime">
+            </div>
+            <input type="submit" value="ログイン">
+        </form>
+        <p><a href="{{url_for('index')}}">トップページへ</a></p>
+        <p>{{email_result}}</p>
+        <p>{{password_result}}</p>
+    </div>
+</body>
+</html>
