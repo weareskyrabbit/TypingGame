@@ -2,8 +2,8 @@
   font-family: Meiryo, Arial, sans-serif;
   text-align: center;
   padding: 20px 6px 5px;
-  background-color: #fff2d8;
-  border: 1px solid #ffd687;
+  background-color: rgb(95, 95, 95);
+  border: 1px solid rgb(180, 0, 0);
   border-radius: 3px;
 }
 #typing-start p {
@@ -36,6 +36,8 @@
   appearance: none;
 }
 #game-overlay {
+  margin: 0;
+  padding: 0;
   position: absolute;
   top: 0;
   left: 0;
