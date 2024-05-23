@@ -6,6 +6,31 @@
     <title>サインアップ</title>
 </head>
 <body>
-    
+    <p>サインアップページ</p>
+    {% with messages = get_flashed_messages() %}            
+        {% if messages %}
+            <ul class="flashes">
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    <form action="{{url_for('sign_up')}}" method="post">
+        <div>
+            <label for="email">メール</label>
+            <input type="email" name="email" placeholder="example@example.com">
+        </div>
+        <div>
+            <label for="password">パスワード</label>
+            <input type="password" name="password" placeholder="">
+        </div>
+        <div>
+            <label for="accountname">アカウント名</label>
+            <input type="text" name="accountname" placeholder="ゲーム内の名前">
+        </div>
+        <input type="submit" value="利用規約に同意して作成">
+        <p><a href="{{url_for('index')}}">トップページへ</a></p>
+    </form>
 </body>
 </html>
