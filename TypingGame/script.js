@@ -25,6 +25,9 @@ Have fun :)
   const progress = document.getElementById('progress-bar');
   const keyboard = document.getElementById('virtual-keyboard');
   const space = keyboard.querySelector('.key_space');
+  const easyButton = document.getElementById('easy-btn');
+  const mediumButton = document.getElementById('medium-btn');
+  const hardButton = document.getElementById('hard-btn');
   let wordJP1 = ['いーあるふぁんくらぶ', '千本桜', 'マトリョシカ', 'ロキ', '文学少女インセイン', 'ロストワンの号哭', 'ゴーストルール', '神っぽいな', 'エイリアンエイリアン', 'こちら、幸福安心委員会です。', '脳漿炸裂ガール', '妄想税', 'ワールズエンド・ダンスホール', 'クワガタにチョップしたらタイムスリップした']; // 表示文章
   let wordJP2 = ['いーあるふぁんくらぶ', 'せんぼんざくら', 'まとりょしか', 'ろき', 'ぶんがくしょうじょいんせいん', 'ろすとわんのごうこく', 'ごーすとるーる', 'かみっぽいな', 'えいりあんえいりあん', 'こちら、こうふくあんしんいいんかいです。', 'のうしょうさくれつがーる', 'もうそうぜい', 'わーるずえんど・だんすほーる', 'くわがたにちょっぷしたらたいむすりっぷした']; // ひらがな文章
   let wordRs; // ローマ字データ1
