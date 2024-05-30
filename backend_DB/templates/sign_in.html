@@ -11,7 +11,7 @@
     <div class="section_sigin_in">
         <p>サインイン</p>
         <p><a href="{{url_for('sign_up')}}">まだアカウントをお持ちでない方はこちら</a></p>
-        {% with messages = get_flashed_messages() %}
+        {% with messages = get_flashed_messages() %}<!--14～22は「パスワードが間違っています」などのエラー文表示-->
             {% if messages %}
             <ul class="flashes">
                 {% for message in messages %}

@@ -7,7 +7,7 @@
 </head>
 <body>
     <p>サインアップページ</p>
-    {% with messages = get_flashed_messages() %}            
+    {% with messages = get_flashed_messages() %}<!--10～18行目は何かしらのエラーが出た時用の項目-->     
         {% if messages %}
             <ul class="flashes">
                 {% for message in messages %}
