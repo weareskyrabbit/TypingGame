@@ -5,18 +5,22 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>打鍵伝説</title>
-  <link rel="stylesheet" href="../static/css/reset.css">
-  <link rel="stylesheet" href="../static/css/style.css">
+  <link rel="stylesheet" href="./reset.css">
+  <link rel="stylesheet" href="./style.css">
 </head>
 
-<!-- Typing game -->
-<body>
-  
+<!-- Typing game -->  
 
 <div id="typing-start">
-  <img src="../static/images/KEYSTROKEofLEGEND.png" alt="打鍵タイトルロゴ">
-  <button id="open-button" type="button">今すぐスタート！</button>
+  <img src="../img/KEYSTROKEofLEGEND.png" alt="打鍵タイトルロゴ">
+  <!-- スタートボタン -->
+  <img id="open-button" src="../img/start_btn.png" alt="startボタン">
+  <img id="mypage-button" src="../img/mypage_btn.png" alt="mypageボタン">
 </div>
+
+<!-- ---ログインボタン---- -->
+<img id="login-button" src="../img/login_btn.png" alt="loginボタン">
+
 <div id="game-screen">
   <div id="game-header">
     <div class="description">タイピングゲーム</div>
@@ -30,12 +34,11 @@
       <div id="game-title">タイピング練習</div>
       <div id="game-explain"></div> 
       <!-- SELECTボタン -->
-          <img class="select_btn" src="../static/images/easy_btn.png" alt="easyボタン">
-          <img class="select_btn" src="../static/images/nomal_btn.png" alt="normalボタン">
-          <img class="select_btn" src="../static/images/hard_btn.png" alt="hardボタン">
+          <img class="select_btn" src="../img/easy_btn.png" alt="easyボタン">
+          <img class="select_btn" src="../img/nomal_btn.png" alt="normalボタン">
+          <img class="select_btn" src="../img/hard_btn.png" alt="hardボタン">
 
-      <!-- スタートボタン -->
-        <img id="start-button" src="../static/images/start_btn.png" alt="startボタン">
+      
         
       <div id="game-func">
         <span>ローマ字表示(R)</span>
@@ -170,6 +173,5 @@
     </div>
   </div>
 </div>
-</body>
-<script src="../static/js/script.js"></script>
+<script src="./script.js"></script>
 </html>
