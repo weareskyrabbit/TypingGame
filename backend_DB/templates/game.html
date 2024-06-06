@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>打鍵伝説</title>
+  <link rel="stylesheet" href="../static/css/style.css">
+</head>
+
+<!-- Typing game -->
+<div id="typing-start">
+  <p>下のボタンをクリックするとゲーム画面が開きます。</p>
+  <button id="open-button" type="button">今すぐスタート！</button>
+  <p class="note">※スクリーンサイズの都合上、解像度(横)748px以上のデバイスでのプレイを推奨します。</p>
+  <noscript>
+    <p class="msg">本ゲームをプレイするにはJavaScriptを有効化してください。</p>
+  </noscript>
+</div>
+<div id="game-screen">
+  <div id="game-header">
+    <div class="description">タイピングゲーム</div>
+    <button id="close-button1" type="button">閉じる</button>
+  </div>
+  <div id="game-banner">
+    <a href="https://itblogger-note.blogspot.com" rel="noopener" target="_blank"></a>
+  </div>
+  <div id="game-body">
+    <div id="game-view1">
+      <div id="game-title">タイピング練習</div>
+      <div id="game-explain"></div> 
+      <!-- SELECTボタン -->
+          <img class="select_btn" src="../static/images/easy_btn.png" alt="easyボタン">
+          <img class="select_btn" src="../static/img/nomal_btn.png" alt="normalボタン">
+          <img class="select_btn" src="../static/img/hard_btn.png" alt="hardボタン">
+
+      <!-- スタートボタン -->
+        <img id="start-button" src="../static/img/start_btn.png" alt="startボタン">
+        
+      <div id="game-func">
+        <span>ローマ字表示(R)</span>
+        <div class="switch-btn">
+          <button class="on-btn btn show" type="button">ON</button>
+          <button class="off-btn btn" type="button">OFF</button>
+        </div>
+        <span>かな表示(K)</span>
+        <div class="switch-btn">
+          <button class="on-btn btn show" type="button">ON</button>
+          <button class="off-btn btn" type="button">OFF</button>
+        </div>
+        <span>キーガイド(G)</span>
+        <div class="switch-btn">
+          <button class="on-btn btn show" type="button">ON</button>
+          <button class="off-btn btn" type="button">OFF</button>
+        </div>
+        <span>WPM表示(W)</span>
+        <div class="switch-btn">
+          <button class="on-btn btn show" type="button">ON</button>
+          <button class="off-btn btn" type="button">OFF</button>
+        </div>
+        <span>スピードバー(S)</span>
+        <div class="switch-btn">
+          <button class="on-btn btn show" type="button">ON</button>
+          <button class="off-btn btn" type="button">OFF</button>
+        </div>
+      </div>
+    </div>
+    <div id="game-view2">
+      <div id="text-container">
+        <div id="miss-type-screen"></div>
+        <div id="start-msg">
+          <p>日本語入力モードをオフにしてください</p>
+          <p><em>スペースキーで開始</em></p>
+          <p>（終了はEscキーです）</p>
+        </div>
+        <div id="example"></div>
+        <div id="kana"></div>
+        <div id="sentence"></div>
+        <div id="progress-bar"></div>
+        <div id="current-wpm"></div>
+        <div id="speed-bar">
+          <div class="cover"></div>
+        </div>
+      </div>
+      <div id="virtual-keyboard">
+        <div class="deco_key1"></div>
+        <div class="key_1">1</div>
+        <div class="key_2">2</div>
+        <div class="key_3">3</div>
+        <div class="key_4">4</div>
+        <div class="key_5">5</div>
+        <div class="key_6">6</div>
+        <div class="key_7">7</div>
+        <div class="key_8">8</div>
+        <div class="key_9">9</div>
+        <div class="key_0">0</div>
+        <div class="key_hyphen">-</div>
+        <div class="deco_key2"></div>
+        <div class="deco_key3"></div>
+        <div class="deco_key4"></div>
+        <div class="deco_key5"></div>
+        <div class="key_q">Q</div>
+        <div class="key_w">W</div>
+        <div class="key_e">E</div>
+        <div class="key_r">R</div>
+        <div class="key_t">T</div>
+        <div class="key_y">Y</div>
+        <div class="key_u">U</div>
+        <div class="key_i">I</div>
+        <div class="key_o">O</div>
+        <div class="key_p">P</div>
+        <div class="key_atmark">@</div>
+        <div class="deco_key6"></div>
+        <div class="key_Enter"></div>
+        <div class="deco_key7"></div>
+        <div class="key_a">A</div>
+        <div class="key_s">S</div>
+        <div class="key_d">D</div>
+        <div class="key_f">F</div>
+        <div class="key_g">G</div>
+        <div class="key_h">H</div>
+        <div class="key_j">J</div>
+        <div class="key_k">K</div>
+        <div class="key_l">L</div>
+        <div class="key_semicolon">;</div>
+        <div class="key_colon">:</div>
+        <div class="deco_key8"></div>
+        <div class="key_lShift">shift</div>
+        <div class="key_z">Z</div>
+        <div class="key_x">X</div>
+        <div class="key_c">C</div>
+        <div class="key_v">V</div>
+        <div class="key_b">B</div>
+        <div class="key_n">N</div>
+        <div class="key_m">M</div>
+        <div class="key_comma">,</div>
+        <div class="key_period">.</div>
+        <div class="key_slash">/</div>
+        <div class="deco_key9"></div>
+        <div class="key_rShift">shift</div>
+        <div class="deco_key10"></div>
+        <div class="deco_key11"></div>
+        <div class="deco_key12"></div>
+        <div class="deco_key13"></div>
+        <div class="key_space">space</div>
+        <div class="deco_key14"></div>
+        <div class="deco_key15"></div>
+        <div class="deco_key16"></div>
+        <div class="deco_key17"></div>
+        <div class="deco_key18"></div>
+      </div>
+    </div>
+    <div id="game-result">
+      <div id="current-result">
+        <div class="result-title">今回のタイピング結果</div>
+        <div id="example-list"></div>
+        <div class="result-data"></div>
+      </div>
+      <div id="prev-result">
+        <div class="result-title">前回の結果</div>
+        <div class="result-data"></div>
+      </div>
+      <div id="result-comment">
+        <div class="container">---</div>
+      </div>
+      <div id="btn-area">
+        <button id="replay-button" class="btn" type="button">もう1回</button>
+        <button id="close-button2" class="btn" type="button">閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+
+</script>
+<style>
+
+</style>
+<script src="./script.js"></script>
+</html>
