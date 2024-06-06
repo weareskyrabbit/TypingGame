@@ -1,10 +1,13 @@
+
 #typing-start {
   font-family: Meiryo, Arial, sans-serif;
   text-align: center;
-  padding: 20px 6px 5px;
-  background-color: rgb(95, 95, 95);
   border: 1px solid rgb(180, 0, 0);
   border-radius: 3px;
+  /* height: 650px; */
+  margin: 0;
+  padding: 0;
+
 }
 #typing-start p {
   font-size: 15px;
@@ -13,9 +16,14 @@
 #typing-start p + p {
   margin: 0;
 }
-#typing-start .note {
-  font-size: 14px;
+
+/* ------ゲームタイトルロゴ----------- */
+img[alt="打鍵タイトルロゴ"] {
+  transform: rotate(-90deg);
+  margin: 0;
+  padding: 0;
 }
+
 #typing-start .msg {
   color: tomato;
 }
@@ -53,6 +61,7 @@
   padding: 0 10px 10px;
   z-index: 10000;
   border: solid 1px;
+  height: 650px;
 }
 #game-screen, #game-screen * {
   font-family: Meiryo, Arial, sans-serif;
