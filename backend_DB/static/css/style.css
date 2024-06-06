@@ -90,12 +90,12 @@ img[alt="打鍵タイトルロゴ"] {
 #game-screen {
   display: none;
   position: absolute;
-  width: 748px;
+  width: 1400px;
   background: #fff;
   padding: 0 10px 10px;
   z-index: 10000;
   border: solid 1px;
-  height: 650px;
+  height: 700px;
 }
 #game-screen, #game-screen * {
   font-family: Meiryo, Arial, sans-serif;
@@ -106,6 +106,12 @@ img[alt="打鍵タイトルロゴ"] {
   padding: 0;
   margin: 0;
 }
+
+img[alt="打鍵タイトルロゴ2"] {
+  width: 400px;
+  padding: 0;
+}
+
 #game-header {
   position: relative;
   height: 40px;
@@ -151,13 +157,7 @@ img[alt="打鍵タイトルロゴ"] {
 #close-button1:hover {
   background: linear-gradient(180deg, #eee, #fff);
 }
-#game-header .description {
-  height: 40px;
-  font-size: 18px;
-  color: #7b7a7a;
-  line-height: 40px;
-  margin: 0 0 0 5px;
-}
+
 #game-banner {
   width: 728px;
   height: 90px;
@@ -170,7 +170,7 @@ img[alt="打鍵タイトルロゴ"] {
 }
 #game-body {
   display: table;
-  width: 728px;
+  width: 100%;
   height: 470px;
   color: #636363;
 }
