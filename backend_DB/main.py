@@ -69,6 +69,7 @@ def sign_in_():
             session["sign_in_status"] = True
             session["usernum"] = user['usernum']
             session['accountname'] = user['accountname']
+            session["email"] = user["email"]
 
             usernum = user['usernum']
             accountname = user['accountname']
@@ -178,6 +179,18 @@ def game():
         return redirect('/sign_in')
     else:
         return render_template('game.html')
+    
+@app.route("/mypage", methods=["GET"])
+def mypage():
+    if not session.get('sign_in_status'):
+        flash('ログインしてください')
+        return redirect('/sign_in')
+    else:
+        usernum = session["usernum"]
+        email = session["email"]
+        accountname = session["accountname"]
+        return render_template('mypage.html',email = email, usernum = usernum, accountname = accountname)
+
 
 
 

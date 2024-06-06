@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>マイページ</title>
+</head>
+<body>
+    <header></header>
+
+    <div class="section_sigin_in">
+        <p>マイページ</p>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <ul class="flashes">
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+        
+        <p>ユーザー番号：</p>{{usernum}}
+        <p>アカウント名：</p>{{accountname}}
+        <p>メールアドレス：</p>{{email}}
+        <p><a href="{{url_for('index')}}">トップページへ</a></p>
+    </div>
+</body>
+</html>
