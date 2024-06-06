@@ -191,6 +191,65 @@ def mypage():
         accountname = session["accountname"]
         return render_template('mypage.html',email = email, usernum = usernum, accountname = accountname)
 
+@app.route("/changeProfile",methods=["GET"])
+def changeProfile():
+    if not session.get('sign_in_status'):
+        flash('ログインしてください')
+        return redirect('/sign_in')
+    else:
+        usernum = session["usernum"]
+        email = session["email"]
+        accountname = session["accountname"]
+        return render_template('changeProfile.html',email = email, usernum = usernum, accountname = accountname)
+
+@app.route("/changeProfile",methods=["POST"])
+def changeProfile_():
+    usernum = session['usernum']
+    gotPassword = request.form.get('password')
+
+    gotPassword = hashlib.sha256(gotPassword.encode('utf-8')).hexdigest()
+
+    try:
+        cnx = database_connection()
+        cur = cnx.cursor(dictionary=True)
+        sql = 'select * from users where password = %s'
+        cur.execute(sql,(gotPassword))
+
+        passwordCheck = cur.fetchone()
+
+        if passwordCheck:
+            newEmail = request.form.get('newEmail')
+            newAccountname = request.form.get('enwAccountname')
+            
+        else:
+            print('')
+
+    except Exception as e:
+        print(e)
+        return redirect('/')
+
+
+
+    
+    if cnx.is_connected():
+        cur = cnx.cursor(dictionary=True)
+        cur.execute(
+            "SELECT * FROM users WHERE usernum = %s",
+            (usernum,)
+        )
+
+        user = cur.fetchone()
+
+    if user:
+        session['accountname'] = user['accountname']
+        session["email"] = user["email"]
+
+        
+        accountname = user['accountname']
+        email = user["email"]
+
+    return render_template('mypage.html',usernum = usernum,accountname = accountname, email = email)
+
 
 
 

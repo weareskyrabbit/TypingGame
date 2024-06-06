@@ -8,7 +8,7 @@
 <body>
     <header></header>
 
-    <div class="section_sigin_in">
+    <div class="section_mypage">
         <p>マイページ</p>
         {% with messages = get_flashed_messages() %}
             {% if messages %}
@@ -20,9 +20,10 @@
             {% endif %}
         {% endwith %}
         
-        <p>ユーザー番号：</p>{{usernum}}
-        <p>アカウント名：</p>{{accountname}}
-        <p>メールアドレス：</p>{{email}}
+        <p>ユーザー番号：{{usernum}}</p>
+        <p>アカウント名：{{accountname}}</p>
+        <p>メールアドレス：{{email}}</p>
+        <p><a href="{{url_for('changeProfile')}}">プロフィールを変更する</a></p>
         <p><a href="{{url_for('index')}}">トップページへ</a></p>
     </div>
 </body>
