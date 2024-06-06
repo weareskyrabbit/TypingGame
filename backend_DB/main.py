@@ -35,7 +35,7 @@ def index():
 @app.route("/sign_in",methods=["GET"])
 def sign_in():
 
-    if session.get("sign_in"):
+    if session.get("sign_in_status"):
         flash('既にログインしています')
         return redirect("/")
 
@@ -97,7 +97,7 @@ def sign_out():
 
 @app.route("/sign_up", methods=["GET"])
 def sign_up():
-    if session.get('sign_in'):
+    if session.get('sign_in_status'):
         flash('すでにログインしています')
         return redirect('/')
     return render_template("sign_up.html")
@@ -171,8 +171,13 @@ def sign_up_():
 
     return redirect("/sign_in")
 
-
-
+@app.route("/game")
+def game():
+    if not session.get('sign_in_status'):
+        flash('ログインしてください')
+        return redirect('/sign_in')
+    else:
+        return render_template('game.html')
 
 
 
