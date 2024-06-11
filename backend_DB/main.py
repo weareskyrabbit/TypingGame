@@ -205,32 +205,58 @@ def changeProfile():
 @app.route("/changeProfile",methods=["POST"])
 def changeProfile_():
     usernum = session['usernum']
+
     gotPassword = request.form.get('password')
 
     gotPassword = hashlib.sha256(gotPassword.encode('utf-8')).hexdigest()
 
+    #パスワードチェック
     try:
         cnx = database_connection()
         cur = cnx.cursor(dictionary=True)
         sql = 'select * from users where password = %s'
-        cur.execute(sql,(gotPassword))
+        cur.execute(sql,(gotPassword, ))
 
         passwordCheck = cur.fetchone()
 
-        if passwordCheck:
-            newEmail = request.form.get('newEmail')
-            newAccountname = request.form.get('enwAccountname')
-            
-        else:
-            print('')
+        if not passwordCheck:
+            flash('パスワードが違います')
+            return redirect('/changeProfile')
+    except Exception as e:
+        print(e)
+        return redirect('/')
+    
 
+    #新登録情報のチェックと更新
+    try:
+        newEmail = request.form.get('newEmail')
+        newAccountname = request.form.get('newAccountname')
+
+        #デバックチェック用
+        print(f'newaccountname:{newAccountname}')
+        print(f'newEmail:{newEmail}')
+
+        if not newEmail and not newAccountname:
+            flash('変更したい情報を1つ以上入力してください')
+            return redirect('/changeProfile')
+
+
+        cnx = database_connection()
+        cur = cnx.cursor(dictionary=True)
+
+        if newEmail:
+            sql = 'UPDATE users SET email = %s WHERE usernum = %s'
+            cur.execute(sql,(newEmail, usernum, ))
+        if newAccountname:
+            sql = 'UPDATE users SET accountname = %s WHERE usernum = %s'
+            cur.execute(sql, (newAccountname, usernum, ))
     except Exception as e:
         print(e)
         return redirect('/')
 
 
 
-    
+    #登録情報更新後のアカウント情報取得
     if cnx.is_connected():
         cur = cnx.cursor(dictionary=True)
         cur.execute(
