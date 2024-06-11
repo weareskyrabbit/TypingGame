@@ -403,6 +403,7 @@ img[alt="打鍵タイトルロゴ2"] {
   position: relative;
   width: 610px;
   margin: 0 auto;
+  color: #ffffff;
 }
 #virtual-keyboard div {
   position: absolute;
@@ -415,6 +416,7 @@ img[alt="打鍵タイトルロゴ2"] {
   line-height: 34px;
   text-align: center;
   overflow: hidden;
+  background-color:#464545 ;
 }
 #virtual-keyboard div.key_1 {
   top: 0;
