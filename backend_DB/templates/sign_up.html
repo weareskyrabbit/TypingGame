@@ -1,47 +1,77 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="../static/images/favicon.ico" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="./images/apple-touch-icon.png"
+    />
     <title>サインアップ</title>
-    <link rel="stylesheet" href="../static/css/sign.css"> <!-- Assuming you have a sign-up specific CSS file -->
-</head>
-<body>
+    <link rel="stylesheet" href="../static/css/sign.css" />
+    <!-- Assuming you have a sign-up specific CSS file -->
+  </head>
+  <body>
     <div class="content">
-        <img class="logo" src="static/images/KEYSTROKEofLEGEND.png" alt="Keystroke of Legend">
-        <div class="container">
-            <p class="login-text">新規作成</p>
-            <!-- Message for incorrect input -->
-            <div id="error-message" class="error-message" style="display:none;">情報を正しく入力してください</div>
-            {% with messages = get_flashed_messages() %}
-                {% if messages %}
-                    <ul class="flashes">
-                        {% for message in messages %}
-                            <li>{{ message }}</li>
-                        {% endfor %}
-                    </ul>
-                {% endif %}
-            {% endwith %}
-            <form id="signup-form" action="{{url_for('sign_up')}}" method="post" onsubmit="return validateForm()">
-                <div class="form">
-                    <div>
-                        <label for="email">メール</label>
-                        <input type="email" id="email" name="email" placeholder="example@example.com">
-                    </div>
-                    <div>
-                        <label for="password">パスワード</label>
-                        <input type="password" id="password" name="password" placeholder="example">
-                    </div>
-                    <div>
-                        <label for="accountname">アカウント名</label>
-                        <input type="text" id="accountname" name="accountname" placeholder="ゲーム内の名前">
-                    </div>
-                </div>
-                <input type="submit" value="利用規約に同意して作成">
-            </form>
-            <p><a href="{{url_for('index')}}">トップページへ</a></p>
+      <img
+        class="logo"
+        src="static/images/KEYSTROKEofLEGEND.png"
+        alt="Keystroke of Legend"
+      />
+      <div class="container">
+        <p class="login-text">新規作成</p>
+        <!-- Message for incorrect input -->
+        <div id="error-message" class="error-message" style="display: none">
+          情報を正しく入力してください
         </div>
+        {% with messages = get_flashed_messages() %} {% if messages %}
+        <ul class="flashes">
+          {% for message in messages %}
+          <li>{{ message }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %} {% endwith %}
+        <form
+          id="signup-form"
+          action="{{url_for('sign_up')}}"
+          method="post"
+          onsubmit="return validateForm()"
+        >
+          <div class="form">
+            <div>
+              <label for="email">メール</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="example@example.com"
+              />
+            </div>
+            <div>
+              <label for="password">パスワード</label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="example"
+              />
+            </div>
+            <div>
+              <label for="accountname">アカウント名</label>
+              <input
+                type="text"
+                id="accountname"
+                name="accountname"
+                placeholder="ゲーム内の名前"
+              />
+            </div>
+          </div>
+          <input type="submit" value="利用規約に同意して作成" />
+        </form>
+        <p><a href="{{url_for('index')}}">トップページへ</a></p>
+      </div>
     </div>
-    
-</body>
+  </body>
 </html>
