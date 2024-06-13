@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -20,7 +20,7 @@
       src="../static/images/start_btn.png"
       alt="openボタン"
     />
-    <a href="./mypage.html"
+    <a href="{{url_for('mypage')}}"
       ><img
         id="mypage-button"
         src="../static/images/mypage_btn.png"
@@ -29,11 +29,11 @@
   </div>
 
   <!-- ---ログインボタン---- -->
-  <img
+  <!--<img
     id="login-button"
     src="../static/images/login_btn.png"
     alt="loginボタン"
-  />
+  />-->
 
   <div id="game-screen">
     <div id="game-header">
