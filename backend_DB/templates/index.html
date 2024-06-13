@@ -12,7 +12,6 @@
     <title>トップページ</title>
   </head>
   <body>
-    <p>サインイン状態かどうかのチェック項目：{{sign_in_status}}</p>
     <p>トップページ</p>
     <p><a href="{{url_for('sign_in')}}">サインインページへ</a></p>
     <p><a href="{{url_for('sign_up')}}">サインアップページへ</a></p>
@@ -20,10 +19,9 @@
     <p><a href="{{url_for('mypage')}}">マイページ</a></p>
     <p><a href="{{url_for('game')}}">ゲーム本編</a></p>
 
-    <p>usernum:</p>
-    {{usernum}}<!--サインイン状態のチェック用-->
-    <p>accountname:</p>
-    {{accountname}}<!--サインイン状態のチェック用-->
+    <p>サインイン状態かどうかのチェック項目：{{sign_in_status}}</p>
+    <p>usernum:{{usernum}}<!--サインイン状態のチェック用--></p>
+    <p>accountname:{{accountname}}<!--サインイン状態のチェック用--></p>
 
     {% with messages = get_flashed_messages() %}<!--20～28行目は何かしらのエラーが出た時用の項目-->
     {% if messages %}
