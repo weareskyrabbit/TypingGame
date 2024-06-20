@@ -141,18 +141,17 @@ def sign_up_():
     check_usernum = 1
     check_result_usernum = 0
 
-    flag = 0
     result = 0
 
     try:
-        while flag == 0:
+        while True:
             sql = 'select count(*) from users where usernum = %s'
             cur.execute(sql, (check_usernum,))
             result = cur.fetchone()['count(*)']
             if result == 1:
                 check_usernum += 1
             else:
-                flag += 1
+                break
         
         resultusernum = check_usernum
 
@@ -274,8 +273,95 @@ def changeProfile_():
         accountname = user['accountname']
         email = user["email"]
 
+        flash('アカウント情報が変更されました')
+
     return render_template('mypage.html',usernum = usernum,accountname = accountname, email = email)
 
+
+@app.route("/changePassword",methods=["GET"])
+def changePassword():
+    if not session.get('sign_in_status'):
+        flash('ログインしてください')
+        return redirect('/sign_in')
+    else:
+        usernum = session["usernum"]
+        email = session["email"]
+        accountname = session["accountname"]
+        return render_template('changePassword.html',email = email, usernum = usernum, accountname = accountname)
+
+
+@app.route("/changePassword",methods=["POST"])
+def changePassword_():
+    usernum = session['usernum']
+
+    oldPassword = request.form.get('oldPassword')
+    
+    oldPassword = hashlib.sha256(oldPassword.encode('utf-8')).hexdigest()
+    
+
+    #パスワードチェック
+    try:
+        cnx = database_connection()
+        cur = cnx.cursor(dictionary=True)
+        sql = 'select * from users where password = %s'
+        cur.execute(sql,(oldPassword, ))
+
+        passwordCheck = cur.fetchone()
+
+        if not passwordCheck:
+            flash('パスワードが違います')
+            return redirect('/changePassword')
+    except Exception as e:
+        print(e)
+        return redirect('/')
+    
+    #新パスワードのチェック
+    try:
+        newPassword = request.form.get('newPassword')
+        checkNewPassword = request.form.get('checkNewPassword')
+
+        if not newPassword or not checkNewPassword:
+            flash('新パスワードを入力してください')
+            return redirect('/changePassword')
+
+        newPassword = hashlib.sha256(newPassword.encode('utf-8')).hexdigest()
+        checkNewPassword = hashlib.sha256(checkNewPassword.encode('utf-8')).hexdigest()
+
+        #デバック確認用
+        print(f'newpassword:{newPassword}')
+        print(f'checknewpassword:{checkNewPassword}')
+
+        if newPassword != checkNewPassword:
+            flash('新パスワードが一致しません')
+            return redirect('/changePassword')
+        
+    except Exception as e:
+        print(e)
+        return redirect('/')
+
+
+    #パスワードを新パスワードに変更
+    try:
+        cnx = database_connection()
+        cur = cnx.cursor(dictionary=True)
+
+        sql = 'UPDATE users SET password = %s WHERE usernum = %s'
+        cur.execute(sql,(newPassword, usernum, ))
+
+        cnx.commit()
+
+    except Exception as e:
+        print(e)
+        return redirect('/')
+
+
+    usernum = session['usernum']
+    accountname = session['accountname']
+    email = session['email']
+
+    flash('パスワードが変更されました')
+
+    return render_template('mypage.html',usernum = usernum,accountname = accountname, email = email)
 
 
 
