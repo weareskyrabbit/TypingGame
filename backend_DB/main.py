@@ -364,6 +364,19 @@ def changePassword_():
     return render_template('mypage.html',usernum = usernum,accountname = accountname, email = email)
 
 
+@app.route("/rankBoard",methods=["GET"])
+def rankBoard():
+    #if not session.get('sign_in_status'):
+    #    flash('ログインしてください')
+    #    return redirect('/sign_in')
+    #else:
+        usernum = session["usernum"]
+        email = session["email"]
+        accountname = session["accountname"]
+        return render_template('rankBoard.html',email = email, usernum = usernum, accountname = accountname)
+
+
+
 
 #flask起動
 if __name__ == "__main__":
