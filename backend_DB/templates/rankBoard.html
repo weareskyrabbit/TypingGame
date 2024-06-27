@@ -14,8 +14,21 @@
   <body>
     <p>ランキング表示</p>
     <p>easy</p>
+    {% for showRankE in easyScoreRank%}
+      <p>{{showRankE['usernum']}}:{{showRankE['easyScore']}}</p>
+    {% endfor %}
+
     <p>normal</p>
+    {% for showRankN in normalScoreRank%}
+      <p>{{showRankN['usernum']}}:{{showRankN['normalScore']}}</p>
+    {% endfor %}
+
     <p>hard</p>
+    {% for showRankH in hardScoreRank%}
+      <p>{{showRankH['usernum']}}:{{showRankH['hardScore']}}</p>
+    {% endfor %}
+
+    <p><a href="{{url_for('index')}}">トップページへ</a></p>
   </body>
 
 </html>

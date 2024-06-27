@@ -26,10 +26,10 @@ def index():
     #セッションから必要な情報を取得
     sign_in_status = session.get("sign_in_status", False)
     usernum = session.get("usernum", None)
-    accountname = session.get("accountname", None)
+    accountName = session.get("accountName", None)
     
 
-    return render_template("index.html", sign_in_status = sign_in_status, usernum = usernum, accountname = accountname)#,user_num = user_num, userName=user_name, points=user_points)
+    return render_template("index.html", sign_in_status = sign_in_status, usernum = usernum, accountName = accountName)
 
 
 @app.route("/sign_in",methods=["GET"])
@@ -68,11 +68,11 @@ def sign_in_():
         if user:
             session["sign_in_status"] = True
             session["usernum"] = user['usernum']
-            session['accountname'] = user['accountname']
+            session['accountName'] = user['accountName']
             session["email"] = user["email"]
 
             usernum = user['usernum']
-            accountname = user['accountname']
+            accountName = user['accountName']
 
         else:
             flash('メールアドレスまたはパスワードが違います')
@@ -84,14 +84,14 @@ def sign_in_():
         return redirect('/sign_in') 
 
 
-    return render_template("index.html",sign_in_status=session.get('login',True),email = email, usernum = usernum, accountname = accountname)
+    return render_template("index.html",sign_in_status=session.get('login',True),email = email, usernum = usernum, accountName = accountName)
 
 
 @app.route("/sign_out")
 def sign_out():
     session['sign_in_status'] = False
     session['usernum'] = False
-    session['accountname'] = False
+    session['accountName'] = False
 
     return redirect("/")
 
@@ -109,13 +109,13 @@ def sign_up_():
 
     email = request.form.get("email")
     password = request.form.get("password")
-    accountname = request.form.get("accountname")    
+    accountName = request.form.get("accountName")    
 
-    if not email or not password or not accountname:
+    if not email or not password or not accountName:
         flash('情報を正しく入力してください')
         print(email)
         print(password)
-        print(accountname)
+        print(accountName)
         return render_template("sign_up.html")
 
     password = hashlib.sha256(password.encode('utf-8')).hexdigest()
@@ -139,7 +139,6 @@ def sign_up_():
 
     #新規追加ユーザーのusernumの決定
     check_usernum = 1
-    check_result_usernum = 0
 
     result = 0
 
@@ -161,12 +160,22 @@ def sign_up_():
 
     #usernumが決定したのでusersテーブルに新規追加
     try:
-        sql = "INSERT INTO users (usernum, email, password, accountname) VALUES (%s, %s, %s, %s)"
-        cur.execute(sql, (resultusernum,email, password, accountname))
+        sql = "INSERT INTO users (usernum, email, password, accountName) VALUES (%s, %s, %s, %s)"
+        cur.execute(sql, (resultusernum,email, password, accountName))
         cnx.commit()
 
     except Exception as e:
         print(e)
+
+
+    #ランキングにすべての難易度で0点として仮登録
+    try:
+        sql = 'INSERT INTO rankBoard (usernum, easyScore, normalScore, hardScore) VALUES (%s, 0, 0, 0)'
+        cur.execute(sql, (resultusernum, ))
+        cnx.commit()
+    except Exception as e:
+        print(e)
+
 
 
     return redirect("/sign_in")
@@ -187,8 +196,8 @@ def mypage():
     else:
         usernum = session["usernum"]
         email = session["email"]
-        accountname = session["accountname"]
-        return render_template('mypage.html',email = email, usernum = usernum, accountname = accountname)
+        accountName = session["accountName"]
+        return render_template('mypage.html',email = email, usernum = usernum, accountName = accountName)
 
 @app.route("/changeProfile",methods=["GET"])
 def changeProfile():
@@ -198,8 +207,8 @@ def changeProfile():
     else:
         usernum = session["usernum"]
         email = session["email"]
-        accountname = session["accountname"]
-        return render_template('changeProfile.html',email = email, usernum = usernum, accountname = accountname)
+        accountName = session["accountName"]
+        return render_template('changeProfile.html',email = email, usernum = usernum, accountName = accountName)
 
 @app.route("/changeProfile",methods=["POST"])
 def changeProfile_():
@@ -229,13 +238,13 @@ def changeProfile_():
     #新登録情報のチェックと更新
     try:
         newEmail = request.form.get('newEmail')
-        newAccountname = request.form.get('newAccountname')
+        newAccountName = request.form.get('newAccountName')
 
         #デバックチェック用
-        print(f'newaccountname:{newAccountname}')
+        print(f'newaccountname:{newAccountName}')
         print(f'newEmail:{newEmail}')
 
-        if not newEmail and not newAccountname:
+        if not newEmail and not newAccountName:
             flash('変更したい情報を1つ以上入力してください')
             return redirect('/changeProfile')
 
@@ -246,9 +255,9 @@ def changeProfile_():
         if newEmail:
             sql = 'UPDATE users SET email = %s WHERE usernum = %s'
             cur.execute(sql,(newEmail, usernum, ))
-        if newAccountname:
-            sql = 'UPDATE users SET accountname = %s WHERE usernum = %s'
-            cur.execute(sql, (newAccountname, usernum, ))
+        if newAccountName:
+            sql = 'UPDATE users SET accountName = %s WHERE usernum = %s'
+            cur.execute(sql, (newAccountName, usernum, ))
     except Exception as e:
         print(e)
         return redirect('/')
@@ -266,16 +275,16 @@ def changeProfile_():
         user = cur.fetchone()
 
     if user:
-        session['accountname'] = user['accountname']
+        session['accountName'] = user['accountName']
         session["email"] = user["email"]
 
         
-        accountname = user['accountname']
+        accountName = user['accountName']
         email = user["email"]
 
         flash('アカウント情報が変更されました')
 
-    return render_template('mypage.html',usernum = usernum,accountname = accountname, email = email)
+    return render_template('mypage.html',usernum = usernum,accountName = accountName, email = email)
 
 
 @app.route("/changePassword",methods=["GET"])
@@ -286,8 +295,8 @@ def changePassword():
     else:
         usernum = session["usernum"]
         email = session["email"]
-        accountname = session["accountname"]
-        return render_template('changePassword.html',email = email, usernum = usernum, accountname = accountname)
+        accountName = session["accountName"]
+        return render_template('changePassword.html',email = email, usernum = usernum, accountName = accountName)
 
 
 @app.route("/changePassword",methods=["POST"])
@@ -356,12 +365,12 @@ def changePassword_():
 
 
     usernum = session['usernum']
-    accountname = session['accountname']
+    accountName = session['accountName']
     email = session['email']
 
     flash('パスワードが変更されました')
 
-    return render_template('mypage.html',usernum = usernum,accountname = accountname, email = email)
+    return render_template('mypage.html',usernum = usernum,accountName = accountName, email = email)
 
 
 @app.route("/rankBoard",methods=["GET"])
@@ -372,8 +381,27 @@ def rankBoard():
     #else:
         usernum = session["usernum"]
         email = session["email"]
-        accountname = session["accountname"]
-        return render_template('rankBoard.html',email = email, usernum = usernum, accountname = accountname)
+        accountName = session["accountName"]
+
+        try:
+            cnx = database_connection()
+            cur = cnx.cursor(dictionary=True)
+            sql = 'select usernum, easyScore from rankBoard ORDER BY easyScore DESC'
+            cur.execute(sql, )
+            easyScoreRank = cur.fetchall()
+            
+            sql = 'select usernum, normalScore from rankBoard ORDER BY normalScore DESC'
+            cur.execute(sql, )
+            normalScoreRank = cur.fetchall()
+
+            sql = 'select usernum, hardScore from rankBoard ORDER BY hardScore DESC'
+            cur.execute(sql, )
+            hardScoreRank = cur.fetchall()
+
+
+        except Exception as e:
+            print(e)
+        return render_template('rankBoard.html',email = email, usernum = usernum, accountName = accountName, easyScoreRank = easyScoreRank, normalScoreRank = normalScoreRank, hardScoreRank = hardScoreRank)
 
 
 
