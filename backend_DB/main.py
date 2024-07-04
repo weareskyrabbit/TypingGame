@@ -29,7 +29,7 @@ def index():
     accountName = session.get("accountName", None)
     
 
-    return render_template("index.html", sign_in_status = sign_in_status, usernum = usernum, accountName = accountName)
+    return render_template("game.html", sign_in_status = sign_in_status, usernum = usernum, accountName = accountName)
 
 
 @app.route("/sign_in",methods=["GET"])

@@ -35,12 +35,13 @@
   </div>
 
   <!-- ---ログインボタン---- -->
-  <!--<img
-    id="login-button"
-    src="../static/images/login_btn.png"
-    alt="loginボタン"
-  />
-  game.htmlはそもそもログインしないとアクセスできないため、一時的にコメントアウトしました  -->
+  <a href="{{url_for('sign_in')}}">
+    <img
+      id="login-button"
+      src="../static/images/login_btn.png"
+      alt="loginボタン"
+    />
+  </a>
 
   <div id="game-screen">
     <div id="game-header">
