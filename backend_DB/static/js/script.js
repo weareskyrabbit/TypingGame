@@ -25,9 +25,9 @@ Have fun :)
   const progress = document.getElementById('progress-bar');
   const keyboard = document.getElementById('virtual-keyboard');
   const space = keyboard.querySelector('.key_space');
-  const easyButton = document.getElementById('easy-btn');
-  const mediumButton = document.getElementById('medium-btn');
-  const hardButton = document.getElementById('hard-btn');
+  const easyButton = document.getElementById('easy_btn');
+  const mediumButton = document.getElementById('nomal_btn');
+  const hardButton = document.getElementById('hard_btn');
   let wordJP1 = ['ダンスホール', 'ピースサイン', '棒人間', '君が好きだと叫びたい', 'ファイヤーフライ', '群青', 'リアルゴーン', 'サンフラワー', 'ハッピー', 'ドライフラワー', '風のゆくえ', '夜に駆ける', 'ビリミリオン', '最高到達点']; // 表示文章
   let wordJP2 = ['だんすほーる', 'ぴーすさいん', 'ぼうにんげん', 'きみがすきだとさけびたい', 'ふぁいやーふらい', 'ぐんじょう', 'りあるごーん', 'さんふらわー', 'はっぴー', 'どらいふらわー', 'かぜのゆくえ', 'よるにかける', 'びりみりおん', 'さいこうとうたつてん']; // ひらがな文章
   let wordRs; // ローマ字データ1
