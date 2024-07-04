@@ -15,17 +15,17 @@
     <p>ランキング表示</p>
     <p>easy</p>
     {% for showRankE in easyScoreRank%}
-      <p>{{showRankE['usernum']}}:{{showRankE['easyScore']}}</p>
+      <p>{{showRankE['accountName']}}:{{showRankE['easyScore']}}</p>
     {% endfor %}
 
     <p>normal</p>
     {% for showRankN in normalScoreRank%}
-      <p>{{showRankN['usernum']}}:{{showRankN['normalScore']}}</p>
+      <p>{{showRankN['accountName']}}:{{showRankN['normalScore']}}</p>
     {% endfor %}
 
     <p>hard</p>
     {% for showRankH in hardScoreRank%}
-      <p>{{showRankH['usernum']}}:{{showRankH['hardScore']}}</p>
+      <p>{{showRankH['accountName']}}:{{showRankH['hardScore']}}</p>
     {% endfor %}
 
     <p><a href="{{url_for('index')}}">トップページへ</a></p>
