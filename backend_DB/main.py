@@ -375,33 +375,40 @@ def changePassword_():
 
 @app.route("/rankBoard",methods=["GET"])
 def rankBoard():
-    #if not session.get('sign_in_status'):
-    #    flash('ログインしてください')
-    #    return redirect('/sign_in')
-    #else:
-        usernum = session["usernum"]
-        email = session["email"]
-        accountName = session["accountName"]
+    usernum = session["usernum"]
+    email = session["email"]
+    accountName = session["accountName"]
 
-        try:
-            cnx = database_connection()
-            cur = cnx.cursor(dictionary=True)
-            sql = 'select usernum, easyScore from rankBoard ORDER BY easyScore DESC'
-            cur.execute(sql, )
-            easyScoreRank = cur.fetchall()
+    try:
+        cnx = database_connection()
+        cur = cnx.cursor(dictionary=True)
+
+        sql = '''select users.accountName, rankBoard.easyScore 
+                 from rankBoard 
+                 inner join users on rankBoard.usernum = users.usernum 
+                 ORDER BY easyScore DESC'''
+        cur.execute(sql, )
+        easyScoreRank = cur.fetchall()
             
-            sql = 'select usernum, normalScore from rankBoard ORDER BY normalScore DESC'
-            cur.execute(sql, )
-            normalScoreRank = cur.fetchall()
+        sql = '''select users.accountName, rankBoard.normalScore 
+                 from rankBoard 
+                 inner join users on rankBoard.usernum = users.usernum 
+                 ORDER BY normalScore DESC'''
+        cur.execute(sql, )
+        normalScoreRank = cur.fetchall()
 
-            sql = 'select usernum, hardScore from rankBoard ORDER BY hardScore DESC'
-            cur.execute(sql, )
-            hardScoreRank = cur.fetchall()
+        sql = '''select users.accountName, rankBoard.hardScore 
+                 from rankBoard 
+                 inner join users on rankBoard.usernum = users.usernum 
+                 ORDER BY hardScore DESC'''
+        cur.execute(sql, )
+        hardScoreRank = cur.fetchall()
 
 
-        except Exception as e:
-            print(e)
-        return render_template('rankBoard.html',email = email, usernum = usernum, accountName = accountName, easyScoreRank = easyScoreRank, normalScoreRank = normalScoreRank, hardScoreRank = hardScoreRank)
+    except Exception as e:
+        print(e)
+    
+    return render_template('rankBoard.html',email = email, usernum = usernum, accountName = accountName, easyScoreRank = easyScoreRank, normalScoreRank = normalScoreRank, hardScoreRank = hardScoreRank)
 
 
 
