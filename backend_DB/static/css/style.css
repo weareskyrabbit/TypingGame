@@ -1,3 +1,16 @@
+#background-video {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -1;
+  transform: translate(-50%, -50%);
+  background-size: cover;
+}
+
 
 #typing-start {
   height: 650px;
@@ -19,7 +32,7 @@
 
 /* ------ゲームタイトルロゴ----------- */
 img[alt="打鍵タイトルロゴ"] {
-  margin: 150px;
+  margin: 120px;
   padding: 0;
 }
 
