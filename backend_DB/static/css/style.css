@@ -119,6 +119,8 @@ img[alt="打鍵タイトルロゴ2"] {
   margin: 0 0 5px;
 }
 
+button{width: 210px;}
+
 .select_btn {
   width: 200px;
 }
