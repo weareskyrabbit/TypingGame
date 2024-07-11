@@ -720,6 +720,7 @@ img[alt="打鍵タイトルロゴ2"] {
 #game-result {
   display: none;
   width: 728px;
+  margin: 0 auto;
 }
 #current-result {
   position: relative;
