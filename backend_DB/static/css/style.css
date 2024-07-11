@@ -722,6 +722,7 @@ button{width: 210px;}
 #game-result {
   display: none;
   width: 728px;
+  margin: 0 auto;
 }
 #current-result {
   position: relative;
