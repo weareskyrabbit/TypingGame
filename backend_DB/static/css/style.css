@@ -1,3 +1,8 @@
+html, body {
+  overflow: hidden;
+  height: 100%;
+}
+
 #background-video {
   position: fixed;
   top: 50%;
@@ -32,7 +37,7 @@
 
 /* ------ゲームタイトルロゴ----------- */
 img[alt="打鍵タイトルロゴ"] {
-  margin: 120px;
+  margin: 130px;
   padding: 0;
 }
 
