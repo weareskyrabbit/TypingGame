@@ -29,7 +29,7 @@ def index():
     accountName = session.get("accountName", None)
     
 
-    return render_template("game.html", sign_in_status = sign_in_status, usernum = usernum, accountName = accountName)
+    return render_template("index.html", sign_in_status = sign_in_status, usernum = usernum, accountName = accountName)
 
 
 @app.route("/sign_in",methods=["GET"])
@@ -49,7 +49,7 @@ def sign_in_():
     password = request.form.get("password")
 
     if not email or not password:
-        flash('メールとパスワードを入力してください')
+        flash('メールとパスワードを入力してください', "error")
         return redirect("/sign_in")
     
     password = hashlib.sha256(password.encode('utf-8')).hexdigest()
@@ -84,7 +84,7 @@ def sign_in_():
         return redirect('/sign_in') 
 
 
-    return render_template("index.html",sign_in_status=session.get('login',True),email = email, usernum = usernum, accountName = accountName)
+    return render_template("game.html",sign_in_status=session.get('login',True),email = email, usernum = usernum, accountName = accountName)
 
 
 @app.route("/sign_out")
@@ -182,10 +182,10 @@ def sign_up_():
 
 @app.route("/game")
 def game():
-    if not session.get('sign_in_status'):
-        flash('ログインしてください')
-        return redirect('/sign_in')
-    else:
+    #if not session.get('sign_in_status'):
+        #flash('ログインしてください')
+        #return redirect('/sign_in')
+    #else:
         return render_template('game.html')
     
 @app.route("/mypage", methods=["GET"])
