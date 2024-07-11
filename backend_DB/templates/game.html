@@ -27,19 +27,35 @@
     <div id="typing-start">
       <img src="../static/images/KEYSTROKEofLEGEND.png" alt="打鍵タイトルロゴ" />
   
-      <!-- スタートボタン -->
+      {% if usernum %} <!--ログイン時-->
+        <!-- スタートボタン -->
+        <img
+          id="open-button"
+          src="../static/images/start_btn.png"
+          alt="openボタン"
+        />
+        <!-- マイページボタン -->
+        <a href="{{url_for('mypage')}}">
+          <img
+            id="mypage-button"
+            src="../static/images/mypage_btn.png"
+            alt="mypageボタン"
+          />
+        </a>
+        <!-- サインアウトボタン -->
+        <a href="{{url_for('sign_out')}}">
+          <img
+            id="mypage-button"
+            src="../static/images/mypage_btn.png"
+            alt="sign_outボタン"
+          />
+        </a>
+      {% else %} <!--非ログイン時-->
       <img
         id="open-button"
         src="../static/images/start_btn.png"
         alt="openボタン"
       />
-      <a href="{{url_for('mypage')}}">
-        <img
-          id="mypage-button"
-          src="../static/images/mypage_btn.png"
-          alt="mypageボタン"
-        />
-      </a>
       <!-- ---ログインボタン---- -->
       <a href="{{url_for('sign_in')}}">
         <img
@@ -48,6 +64,15 @@
           alt="loginボタン"
         />
       </a>
+      <!-- ---アカウント新規作成ボタン---- -->
+      <a href="{{url_for('sign_up')}}">
+        <img
+          id="login-button"
+          src="../static/images/login_btn.png"
+          alt="sign_upボタン"
+        />
+      </a>
+      {% endif %}
     </div>
   
     
