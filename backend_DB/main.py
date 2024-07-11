@@ -29,14 +29,14 @@ def index():
     accountName = session.get("accountName", None)
     
 
-    return render_template("index.html", sign_in_status = sign_in_status, usernum = usernum, accountName = accountName)
+    return render_template("game.html", sign_in_status = sign_in_status, usernum = usernum, accountName = accountName)
 
 
 @app.route("/sign_in",methods=["GET"])
 def sign_in():
 
     if session.get("sign_in_status"):
-        flash('既にログインしています')
+        #flash('既にログインしています')
         return redirect("/")
 
     return render_template("sign_in.html")
@@ -99,7 +99,7 @@ def sign_out():
 @app.route("/sign_up", methods=["GET"])
 def sign_up():
     if session.get('sign_in_status'):
-        flash('すでにログインしています')
+        #flash('すでにログインしています')
         return redirect('/')
     return render_template("sign_up.html")
 
@@ -191,7 +191,7 @@ def game():
 @app.route("/mypage", methods=["GET"])
 def mypage():
     if not session.get('sign_in_status'):
-        flash('ログインしてください')
+        #flash('ログインしてください')
         return redirect('/sign_in')
     else:
         usernum = session["usernum"]
@@ -202,7 +202,7 @@ def mypage():
 @app.route("/changeProfile",methods=["GET"])
 def changeProfile():
     if not session.get('sign_in_status'):
-        flash('ログインしてください')
+        #flash('ログインしてください')
         return redirect('/sign_in')
     else:
         usernum = session["usernum"]
@@ -290,7 +290,7 @@ def changeProfile_():
 @app.route("/changePassword",methods=["GET"])
 def changePassword():
     if not session.get('sign_in_status'):
-        flash('ログインしてください')
+        #flash('ログインしてください')
         return redirect('/sign_in')
     else:
         usernum = session["usernum"]
