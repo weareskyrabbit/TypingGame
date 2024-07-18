@@ -3,6 +3,7 @@ html, body {
   height: 100%;
 }
 
+/* 背景動画 */
 #background-video {
   position: fixed;
   top: 50%;
@@ -16,13 +17,20 @@ html, body {
   background-size: cover;
 }
 
+/* ゲームロゴ */
+.logo_img {
+  margin: 100px 0 150px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
+/* トップボタンもろもろ */
 #typing-start {
   height: 650px;
   font-family: Meiryo, Arial, sans-serif;
   text-align: center;
   border-radius: 3px;
-  /* height: 650px; */
   margin: 0;
   padding: 0;
 
@@ -34,15 +42,6 @@ html, body {
 #typing-start p + p {
   margin: 0;
 }
-
-/* ------ゲームタイトルロゴ----------- */
-.logo_img {
-  margin: 100px 0 150px 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 
 #typing-start .msg {
   color: tomato;
@@ -68,7 +67,6 @@ html, body {
   cursor: pointer;
   appearance: none;
 }
-
 
 #mypage-button {
   display: block;
