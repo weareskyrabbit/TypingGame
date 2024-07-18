@@ -36,14 +36,22 @@ html, body {
 }
 
 /* ------ゲームタイトルロゴ----------- */
-img[alt="打鍵タイトルロゴ"] {
-  margin: 130px;
-  padding: 0;
+.logo_img {
+  margin: 100px 0 150px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
 
 #typing-start .msg {
   color: tomato;
 }
+
+#typing-start img{
+  border: solid black 1px;
+}
+
 #open-button {
   display: block;
   width: auto;
@@ -60,6 +68,7 @@ img[alt="打鍵タイトルロゴ"] {
   cursor: pointer;
   appearance: none;
 }
+
 
 #mypage-button {
   display: block;
