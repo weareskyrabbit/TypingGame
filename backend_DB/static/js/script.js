@@ -28,8 +28,15 @@ Have fun :)
   const easyButton = document.getElementById('easy_btn');
   const mediumButton = document.getElementById('nomal_btn');
   const hardButton = document.getElementById('hard_btn');
-  let wordJP1 = ['ダンスホール', 'ピースサイン', '棒人間', '君が好きだと叫びたい', 'ファイヤーフライ', '群青', 'リアルゴーン', 'サンフラワー', 'ハッピー', 'ドライフラワー', '風のゆくえ', '夜に駆ける', 'ビリミリオン', '最高到達点']; // 表示文章
-  let wordJP2 = ['だんすほーる', 'ぴーすさいん', 'ぼうにんげん', 'きみがすきだとさけびたい', 'ふぁいやーふらい', 'ぐんじょう', 'りあるごーん', 'さんふらわー', 'はっぴー', 'どらいふらわー', 'かぜのゆくえ', 'よるにかける', 'びりみりおん', 'さいこうとうたつてん']; // ひらがな文章
+  let wordJP1_easy = ["簡単な単語1", "簡単な単語2", "簡単な単語3"];
+  let wordJP2_easy = ["かんたんなたんご1", "かんたんなたんご2", "かんたんなたんご3"];
+
+  let wordJP1_normal = ["普通の単語1", "普通の単語2", "普通の単語3"];
+  let wordJP2_normal = ["ふつうのたんご1", "ふつうのたんご2", "ふつうのたんご3"];
+
+  let wordJP1_hard = ["難しい単語1", "難しい単語2", "難しい単語3"];
+  let wordJP2_hard = ["むずかしいたんご1", "むずかしいたんご2", "むずかしいたんご3"];
+  
   let wordRs; // ローマ字データ1
   let wordR; // ローマ字データ2
   let record; // タイプした文章の記録
@@ -130,6 +137,20 @@ Have fun :)
   }
 
   // ゲーム開始処理
+  function setDifficulty(level) {
+    if (level === 'easy') {
+      wordJP1 = wordJP1_easy;
+      wordJP2 = wordJP2_easy;
+    } else if (level === 'normal') {
+      wordJP1 = wordJP1_normal;
+      wordJP2 = wordJP2_normal;
+    } else if (level === 'hard') {
+      wordJP1 = wordJP1_hard;
+      wordJP2 = wordJP2_hard;
+    }
+    gameInit();
+  }
+
   function gameInit() {
     count = 0;
     idx1 = 0;
