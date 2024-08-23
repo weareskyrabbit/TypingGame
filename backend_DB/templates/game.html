@@ -112,6 +112,8 @@
           <img class="select_btn" id="normal_btn" src="../static/images/normal_btn.png" alt="normalボタン" onclick="setDifficulty('normal')" />
           <img class="select_btn" id="hard_btn" src="../static/images/hard_btn.png" alt="hardボタン" onclick="setDifficulty('hard')" />
   
+          
+
           <!-- -----ゲームスタートボタン------ -->
           <!-- <img
             id="start-button"
@@ -148,13 +150,23 @@
           </div>
         </div>
         <div id="game-view2">
+          <!-- モンスター登場メッセージ -->
+          <div id="message" class="hidden"></div>
+          
+          <!-- モンスターの画像表示 -->
+          <div id="difficulty-image">
+            <img id="image" src="" alt="難易度画像">
+          </div>
+
+          <div id="start-msg">
+            <p>日本語入力モードをオフにしてください</p>
+            <p><em>スペースキーで開始</em></p>
+            <p>（終了はEscキーです）</p>
+          </div>
+
           <div id="text-container">
             <div id="miss-type-screen"></div>
-            <div id="start-msg">
-              <p>日本語入力モードをオフにしてください</p>
-              <p><em>スペースキーで開始</em></p>
-              <p>（終了はEscキーです）</p>
-            </div>
+            
             <div id="example"></div>
             <div id="kana"></div>
             <div id="sentence"></div>
@@ -233,6 +245,7 @@
           </div>
         </div>
         <div id="game-result">
+          <h2>モンスター討伐おめでとう！！</h2>
           <div id="current-result">
             <div class="result-title">今回のタイピング結果</div>
             <div id="example-list"></div>

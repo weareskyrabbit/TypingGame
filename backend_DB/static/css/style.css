@@ -3,6 +3,36 @@ html, body {
   height: 100%;
 }
 
+/* モンスター表示メッセージ */
+#message {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 24px;
+  color: rgb(255, 255, 255);
+  background-color: #000;
+  z-index: 2; /* メッセージを画像の上に表示 */
+}
+
+
+.hidden {
+  display: none;
+}
+
+/* モンスターの画像表示 */
+#difficulty-image {
+  position: absolute; /* 必要に応じて位置を調整 */
+  top: 50%; /* 必要に応じて調整 */
+  left: 50%; /* 必要に応じて調整 */
+  transform: translate(-50%, -50%); /* 中央に配置するための調整 */
+  width: 200px;
+  height: auto;
+  display: none;
+  text-align: center;
+}
+
+
 /* 背景動画 */
 #background-video {
   position: fixed;
