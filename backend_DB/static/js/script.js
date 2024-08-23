@@ -8,7 +8,10 @@ Have fun :)
   const game = document.getElementById('game-screen');
   const button1 = document.getElementById('close-button1');
   const button2 = document.getElementById('open-button')
-  const button3 = document.getElementById('start-button');
+  //const button3 = document.getElementById('start-button');
+  const button3_1 =document.getElementById('easy_btn');
+  const button3_2 =document.getElementById('normal_btn');
+  const button3_3 =document.getElementById('hard_btn');
   const button4 = document.getElementById('replay-button');
   const button5 = document.getElementById('close-button2');
   const view1 = document.getElementById('game-view1');
@@ -25,18 +28,14 @@ Have fun :)
   const progress = document.getElementById('progress-bar');
   const keyboard = document.getElementById('virtual-keyboard');
   const space = keyboard.querySelector('.key_space');
-  const easyButton = document.getElementById('easy_btn');
-  const mediumButton = document.getElementById('nomal_btn');
-  const hardButton = document.getElementById('hard_btn');
-  let wordJP1_easy = ["簡単な単語1", "簡単な単語2", "簡単な単語3"];
-  let wordJP2_easy = ["かんたんなたんご1", "かんたんなたんご2", "かんたんなたんご3"];
-
-  let wordJP1_normal = ["普通の単語1", "普通の単語2", "普通の単語3"];
-  let wordJP2_normal = ["ふつうのたんご1", "ふつうのたんご2", "ふつうのたんご3"];
-
-  let wordJP1_hard = ["難しい単語1", "難しい単語2", "難しい単語3"];
-  let wordJP2_hard = ["むずかしいたんご1", "むずかしいたんご2", "むずかしいたんご3"];
-  
+  let wordJP1 = []; 
+  let wordJP2 = [];
+  let easyWord1 = ['簡単な単語']
+  let easyWord2 = ['かんたんなたんご']
+  let normalWord1 = ['普通の単語']
+  let normalWord2 = ['ふつうのたんご']
+  let hardWord1 = ['難しい単語']
+  let hardWord2 = ['むずかしいたんご']
   let wordRs; // ローマ字データ1
   let wordR; // ローマ字データ2
   let record; // タイプした文章の記録
@@ -98,6 +97,32 @@ Have fun :)
     isFirst = false;
   }
 
+  //難易度決定処理
+  function word_easy(){
+    wordJP1 = [];
+    wordJP2 = [];
+
+    wordJP1= easyWord1;
+    wordJP2= easyWord2;
+    start()
+  }
+  function word_normal(){
+    wordJP1 = [];
+    wordJP2 = [];
+
+    wordJP1= normalWord1;
+    wordJP2= normalWord2;
+    start()
+  }
+  function word_hard(){
+    wordJP1 = [];
+    wordJP2 = [];
+
+    wordJP1= hardWord1;
+    wordJP2= hardWord2;
+    start()
+  }
+
   // スタート処理
   function start() {
     view1.style.display = 'none';
@@ -137,20 +162,6 @@ Have fun :)
   }
 
   // ゲーム開始処理
-  function setDifficulty(level) {
-    if (level === 'easy') {
-      wordJP1 = wordJP1_easy;
-      wordJP2 = wordJP2_easy;
-    } else if (level === 'normal') {
-      wordJP1 = wordJP1_normal;
-      wordJP2 = wordJP2_normal;
-    } else if (level === 'hard') {
-      wordJP1 = wordJP1_hard;
-      wordJP2 = wordJP2_hard;
-    }
-    gameInit();
-  }
-
   function gameInit() {
     count = 0;
     idx1 = 0;
@@ -833,7 +844,10 @@ Have fun :)
   // ボタンクリック時
   button1.addEventListener('click', close);
   button2.addEventListener('click', open);
-  button3.addEventListener('click', start);
+  //button3.addEventListener('click', start);
+  button3_1.addEventListener('click', word_easy);
+  button3_2.addEventListener('click', word_normal);
+  button3_3.addEventListener('click', word_hard);
   button4.addEventListener('click', replay);
   button5.addEventListener('click', close);
   for (let i = 0; i < onBtns.length; i++) {
