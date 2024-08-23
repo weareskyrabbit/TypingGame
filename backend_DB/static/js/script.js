@@ -113,7 +113,7 @@ Have fun :)
     let messageText = 'スライムがあらわれた！';
     message.textContent = messageText;
 
-    image.src = '../static/images/easy_image.jpg'; // easyボタンに対応する画像
+    image.src = '../static/images/easy_image.png'; // easyボタンに対応する画像
     difficultyImage.style.display = 'block'; // 画像を表示
     message.classList.remove('hidden');
 
