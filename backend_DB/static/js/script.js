@@ -12,6 +12,11 @@ Have fun :)
   const button3_1 =document.getElementById('easy_btn');
   const button3_2 =document.getElementById('normal_btn');
   const button3_3 =document.getElementById('hard_btn');
+
+  const message = document.getElementById('message');
+  const difficultyImage = document.getElementById('difficulty-image');
+  const image = document.getElementById('image');
+
   const button4 = document.getElementById('replay-button');
   const button5 = document.getElementById('close-button2');
   const view1 = document.getElementById('game-view1');
@@ -104,7 +109,20 @@ Have fun :)
 
     wordJP1= easyWord1;
     wordJP2= easyWord2;
-    start()
+
+    let messageText = 'スライムがあらわれた！';
+    message.textContent = messageText;
+
+    image.src = '../static/images/easy_image.png'; // easyボタンに対応する画像
+    difficultyImage.style.display = 'block'; // 画像を表示
+    message.classList.remove('hidden');
+
+    setTimeout(() => {
+        message.classList.add('hidden'); // メッセージを非表示
+    }, 2000);
+
+    start();
+    
   }
   function word_normal(){
     wordJP1 = [];
@@ -112,7 +130,19 @@ Have fun :)
 
     wordJP1= normalWord1;
     wordJP2= normalWord2;
-    start()
+    
+    let messageText = 'ドラゴンがあらわれた！';
+    message.textContent = messageText;
+
+    image.src = '../static/images/nomal_image.jpg'; // easyボタンに対応する画像
+    difficultyImage.style.display = 'block'; // 画像を表示
+    message.classList.remove('hidden');
+
+    setTimeout(() => {
+        message.classList.add('hidden'); // メッセージを非表示
+    }, 2000);
+
+    start();
   }
   function word_hard(){
     wordJP1 = [];
@@ -120,8 +150,22 @@ Have fun :)
 
     wordJP1= hardWord1;
     wordJP2= hardWord2;
-    start()
+
+    let messageText = '魔王があらわれた！';
+    message.textContent = messageText;
+
+    image.src = '../static/images/hard_image.jpg'; // easyボタンに対応する画像
+    difficultyImage.style.display = 'block'; // 画像を表示
+    message.classList.remove('hidden');
+
+    setTimeout(() => {
+        message.classList.add('hidden'); // メッセージを非表示
+    }, 2000);
+
+    start();
   }
+
+  
 
   // スタート処理
   function start() {
