@@ -134,7 +134,7 @@ Have fun :)
     let messageText = 'ドラゴンがあらわれた！';
     message.textContent = messageText;
 
-    image.src = '../static/images/nomal_image.jpg'; // easyボタンに対応する画像
+    image.src = '../static/images/nomal_image.png'; // easyボタンに対応する画像
     difficultyImage.style.display = 'block'; // 画像を表示
     message.classList.remove('hidden');
 
