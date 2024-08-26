@@ -23,7 +23,7 @@ html, body {
 /* モンスターの画像表示 */
 #difficulty-image {
   position: absolute; /* 必要に応じて位置を調整 */
-  top: 45%; /* 必要に応じて調整 */
+  top: 43%; /* 必要に応じて調整 */
   left: 50%; /* 必要に応じて調整 */
   transform: translate(-50%, -50%); /* 中央に配置するための調整 */
   height: auto;
@@ -32,7 +32,7 @@ html, body {
 }
 
 #difficulty-image img {
-  width: 300px; /* 画像の幅を指定 */
+  width: 290px; /* 画像の幅を指定 */
   height: auto; /* 高さは自動で調整 */
 }
 
